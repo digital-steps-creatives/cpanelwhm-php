@@ -10,11 +10,11 @@
 
 To install this package, you can run this code via your terminal
 ```shell
-	composer require gufy/cpanel-whm:dev-master
+	composer require dscreatives/cpanel-php:~2.0
 ```
 Or update your `composer.json` by adding this line
 ```json
-	"gufy/cpanel-php":"~1.0"
+	"dscreatives/cpanel-php":"~2.0"
 ```
 
 Then, run this code
@@ -28,7 +28,7 @@ For example, if you would like to get list accounts of your whm server, you can 
 
 ```php
   <?php
-  $cpanel = new \Gufy\CpanelPhp\Cpanel([
+  $cpanel = new \Dscreatives\CpanelPhp\Cpanel([
       'host'        =>  'https://123.456.789.123:2087', // ip or domain complete with its protocol and port
       'username'    =>  'root', // username of your server, it usually root.
       'auth_type'   =>  'hash', // set 'hash' or 'password'
@@ -51,7 +51,7 @@ This is the example when you want to define your configuration while creating ne
 
 ```php
   <?php
-  $cpanel = new \Gufy\CpanelPhp\Cpanel([
+  $cpanel = new \Dscreatives\CpanelPhp\Cpanel([
       'host'        =>  'https://123.456.789.123:2087', // required
       'username'    =>  'root', // required
       'auth_type'   =>  'hash', // optional, default 'hash'
@@ -68,6 +68,9 @@ For example, you would like to get some list accounts from cPanel/WHM
 
 	// passing parameters
 	$accounts = $cpanel->listaccts(['searchtype'=>'domain', 'search'=>'', 'exact', 'search'=>'helloworld.com']);
+	
+	// create account (Domain Name, Username, Password, Plan Slug)
+	createAccount(www.domain_name.com.br, 'user', 'pass', 'plan_basic');
 ```
 
 For accessing cPanel API 2, you can use this.

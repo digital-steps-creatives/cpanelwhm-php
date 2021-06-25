@@ -1,5 +1,5 @@
 <?php
-namespace Dsc\CpanelPhp;
+namespace Dscreatives\CpanelPhp;
 
 
 /**

@@ -1,5 +1,5 @@
 <?php
-use Gufy\CpanelPhp\Cpanel;
+use Dscreatives\CpanelPhp\Cpanel;
 class CpanelTest extends PHPUnit_Framework_TestCase
 {
   public function testConfiguration()

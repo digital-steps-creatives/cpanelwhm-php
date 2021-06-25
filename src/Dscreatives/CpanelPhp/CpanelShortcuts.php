@@ -1,13 +1,11 @@
-<?php
-
-namespace Dsc\CpanelPhp;
+<?php namespace Dscreatives\CpanelPhp;
 
 /**
  * Trait CpanelShortcuts
  *
  * A handful of shortcuts for getting things done(tm)
  *
- * @package Gufy\CpanelWhm
+ * @package Dscreatives\CpanelWhm
  */
 trait CpanelShortcuts
 {
@@ -62,6 +60,16 @@ trait CpanelShortcuts
     {
         return $this->cpanel('Email', 'listpops', $username);
     }
+    
+    /**
+     * Gets the forwarders that exist under a cPanel account
+     *
+     * @param $username
+     */
+    public function listForwards($username)
+    {
+        return $this->cpanel('Email', 'listforwards', $username);
+    }
 
     /**
      * @param $username **cPanel username**
@@ -101,7 +109,7 @@ trait CpanelShortcuts
     public function checkConnection()
     {
         try {
-            $this->runQuery('', []);
+            $this->runQuery('', [], true);
         } catch (\Exception $e) {
             if ($e->hasResponse()) {
                 switch ($e->getResponse()->getStatusCode()) {
