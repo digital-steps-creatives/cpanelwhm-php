@@ -1,0 +1,24 @@
+{
+    "name": "dsc/cpanel-php",
+    "description": "Cpanel/WHM API for PHP",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "digital steps creatives",
+            "email": "development@dsc.co.ke"
+        }
+    ],
+    "require": {
+        "php": ">=7.2",
+        "guzzlehttp/guzzle":"^7.0.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.5|^9.0"
+    },
+    "autoload": {
+        "psr-0": {
+            "Dsc\\CpanelPhp\\": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}
