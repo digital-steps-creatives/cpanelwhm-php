@@ -1,137 +1,52 @@
-## cPanel/WHM API for PHP library
+# Very short description of the package
 
-## Contents
-- [Installation Guide](#installation-guide)
-- [Usage](#usage)
-- [Functions](#functions)
-- [Feedback & Contribution](#feedback-&-contribution)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/dscreatives/cpanel-php.svg?style=flat-square)](https://packagist.org/packages/dscreatives/cpanel-php)
+[![Total Downloads](https://img.shields.io/packagist/dt/dscreatives/cpanel-php.svg?style=flat-square)](https://packagist.org/packages/dscreatives/cpanel-php)
+![GitHub Actions](https://github.com/dscreatives/cpanel-php/actions/workflows/main.yml/badge.svg)
 
-### Installation Guide
+This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what PSRs you support to avoid any confusion with users and contributors.
 
-To install this package, you can run this code via your terminal
-```shell
-	composer require dscreatives/cpanel-php:~2.0
-```
-Or update your `composer.json` by adding this line
-```json
-	"dscreatives/cpanel-php":"~2.0"
+## Installation
+
+You can install the package via composer:
+
+```bash
+composer require dscreatives/cpanel-php
 ```
 
-Then, run this code
-```shell
-	composer update
-```
-
-### Usage
-
-For example, if you would like to get list accounts of your whm server, you can do this.
+## Usage
 
 ```php
-  <?php
-  $cpanel = new \Dscreatives\CpanelPhp\Cpanel([
-      'host'        =>  'https://123.456.789.123:2087', // ip or domain complete with its protocol and port
-      'username'    =>  'root', // username of your server, it usually root.
-      'auth_type'   =>  'hash', // set 'hash' or 'password'
-      'password'    =>  'password', // long hash or your user's password
-  ]);
-
-  $accounts = $cpanel->listaccts(); // it will returned as array
-
+// Usage description here
 ```
 
-### Functions
+### Testing
 
-- [Defining Configuration on constructor](#defining-configuration-on-constructor)
-- [Usage](#usage)
-- [Overriding Current configuration](#overriding-current-configuration)
-- [Get defined configuration](#get-defined-configuration)
-
-#### Defining Configuration on constructor
-This is the example when you want to define your configuration while creating new object
-
-```php
-  <?php
-  $cpanel = new \Dscreatives\CpanelPhp\Cpanel([
-      'host'        =>  'https://123.456.789.123:2087', // required
-      'username'    =>  'root', // required
-      'auth_type'   =>  'hash', // optional, default 'hash'
-      'password'    =>  'password', // required
-  ]);
+```bash
+composer test
 ```
 
-#### Usage
-For example, you would like to get some list accounts from cPanel/WHM
-```php
-	<?php
+### Changelog
 
-	$accounts = $cpanel->listaccts();
+Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
 
-	// passing parameters
-	$accounts = $cpanel->listaccts(['searchtype'=>'domain', 'search'=>'', 'exact', 'search'=>'helloworld.com']);
-	
-	// create account (Domain Name, Username, Password, Plan Slug)
-	createAccount(www.domain_name.com.br, 'user', 'pass', 'plan_basic');
-```
+## Contributing
 
-For accessing cPanel API 2, you can use this.
+Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
-```php
-	<?php
-	// get bandwidth data of specific cPanel's user
-	$data = $cpanel->cpanel('Bandwidth', 'getbwdata', 'username');
+### Security
 
-	// removing cron line
-	$data = $cpanel->cpanel('Cron', 'remove_line', 'username', ['line'=>1]);
-```
+If you discover any security related issues, please email development@dsc.co.ke instead of using the issue tracker.
 
-The first parameter must be Module you would like to get, second is function name, and the third is username of cPanel's user. There is fourth arguments, when function has some additional arguments, you can pass it there.
+## Credits
 
-For accessing to cPanel API 1 or cPanel API 2 or UAPI, you can use this.
+-   [Digital Steps Creatives](https://github.com/dscreatives)
+-   [All Contributors](../../contributors)
 
-```php
-	<?php
-	// get bandwidth data of specific cPanel's user (using cPanel API 2)
-	$data = $cpanel->execute_action('2', 'Bandwidth', 'getbwdata', 'username');
+## License
 
-	// removing email address (using UAPI)
-	$data = $cpanel->execute_action('3', 'Email', 'delete_pop', 'username', ['email'=>'peter@griffin.com']);
-```
+The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
 
-This function is similar to the above, the only difference is that it has added a parameter which indicates the API you want to use (1 = cPanel API 1, 2 = cPanel API 2, 3 = UAPI), the other arguments are the same.
+## PHP Package Boilerplate
 
-#### Overriding current configuration
-Somehow, you want to override your current configuration. To do this, here is the code
-
-```php
-  <?php
-  // change username andd (password or hash)
-  $cpanel->setAuthorization($username, $password);
-
-  // change host
-  $cpanel->setHost($host);
-
-  // change authentication type
-  $cpanel->setAuthType($auth_type);
-```
-
-#### Get defined configuration
-After you define some of your configuration, you can get it again by calling this functions
-
-```php
-  <?php
-  // get username
-  $cpanel->getUsername();
-
-  // get password
-  $cpanel->getPassword();
-
-  // get authentication type
-  $cpanel->getAuthType();
-
-  // get host
-  $cpanel->getHost();
-```
-
-#### Feedback and contribution
-
-This package is free and open source, feel free to fork and report some issue to this package. :-). Have fun
+This package was generated using the [PHP Package Boilerplate](https://laravelpackageboilerplate.com) by [Beyond Code](http://beyondco.de/).
