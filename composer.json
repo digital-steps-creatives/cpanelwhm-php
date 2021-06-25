@@ -1,5 +1,5 @@
 {
-    "name": "dsc/cpanel-php",
+    "name": "dscreatives/cpanel-php",
     "description": "Cpanel/WHM API for PHP",
     "license": "MIT",
     "authors": [
